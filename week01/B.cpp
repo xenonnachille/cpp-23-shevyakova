@@ -30,11 +30,13 @@ int main() {
         std::cout<< '\n' << std::endl;
     } else if (d == 0) {
         x1 = -b/(2*a);
+        if (b == 0) {
+            x1 = 0;
+        }
         std::cout << x1 << std::endl;
     } else {
         x1 = (-b - sqrt(d))/(2*a);
         x2 = (-b + sqrt(d))/(2*a);
-        
         std::cout << x1 << ' ' << x2 << std::endl;
     }
     }
