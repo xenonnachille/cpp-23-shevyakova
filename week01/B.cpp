@@ -8,7 +8,7 @@ int main() {
     if (a == 0) {
         if (b == 0) {
             if (c != 0) {
-                std::cout << '\n' << std::endl;
+                std::cout << std::endl;
             } else if (c == 0) {
                 std::cout << "ALL REAL NUMBERS" << std::endl;
             }
@@ -27,7 +27,7 @@ int main() {
         }
     int d = b*b - 4*a*c;
     if (d < 0) {
-        std::cout<< '\n' << std::endl;
+        std::cout << std::endl;
     } else if (d == 0) {
         x1 = -b/(2*a);
         if (b == 0) {
