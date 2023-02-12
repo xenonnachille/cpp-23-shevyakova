@@ -4,8 +4,8 @@ using std::cout;
 using std::cin;
 using std::endl;
 
-int recursive_power(int base, int power) {
-    int ans = base;
+long long int recursive_power(int base, int power) {
+    long long int ans = base;
     if (power == 0) {
         return 1;
     } else {
