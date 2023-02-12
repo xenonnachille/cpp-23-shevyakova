@@ -20,7 +20,7 @@ void is_palindrom(int n) {
 }
 
 int main() {
-    int n = 0;
+    long long int n = 0;
     cin >> n;
     is_palindrom(n);
     return 0;
