@@ -4,7 +4,7 @@ using std::cout;
 using std::cin;
 using std::endl;
 
-void is_palindrom(int n) {
+void is_palindrom(long long int n) {
     long long int helping_num = n, reversed_num = 0;
     while (helping_num > 0) {
         reversed_num = 10 * reversed_num + helping_num % 10;
