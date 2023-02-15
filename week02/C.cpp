@@ -5,7 +5,7 @@ using std::cin;
 using std::endl;
 
 int main() {
-    int x = 0;
+    long long int x = 0;
     cin >> x; 
     while (x % 2 == 0) {
         x /= 2;
