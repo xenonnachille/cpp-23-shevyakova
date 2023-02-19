@@ -6,7 +6,7 @@ using std::cin;
 using std::endl;
 
 void is_prime(int n) {
-    if (i % 2 == 0) {
+    if (n % 2 == 0) {
         cout << "NO" << endl;
         return;
     } else {
@@ -18,6 +18,7 @@ void is_prime(int n) {
         }
     }
     cout << "YES" << endl;
+    return;
 }
 
 int main() {
