@@ -17,7 +17,7 @@ std::default_random_engine rng(seed);
 std::uniform_int_distribution<unsigned> dstr(0, N-1);
 int arr[N];
 int array[N];
-
+int helping_array[];
 
 
 int search(int array[], int n, int key) {
@@ -36,10 +36,11 @@ void swap(int &i, int &j) {
     return;
 }
 
-void strategy_A(int array[], int n, int key){
+void strategy_C(int array[], int help_arr[], int n, int n1, int key){
+    
     int i = search(array, n, key);
     if (i != -1 and i != 0) {
-        swap(array[i], array[0]);
+        swap(array[i], array[i-1]);
     }
 
 }
@@ -61,36 +62,36 @@ int main() {
 
 
     std::ofstream out;
-    out.open("strategy_A.csv");
+    out.open("strategy_B.csv");
     out << "N,time_ravnomerno,time_ne_ravnomerno" << std::endl;
     
-    
     for(unsigned counter = 100; counter < N; counter += 10000) {
-        randomize(array, counter);
         unsigned seed2 = counter*7;
         std::default_random_engine rng(seed2);
         std::uniform_int_distribution<unsigned> dstr2(0, counter+1);  
+        randomize(array, counter);
+        key = dstr2(rng);
+
         //равномерно:
         auto begin = std::chrono::steady_clock::now();
         for (unsigned cnt = 10000; cnt != 0 ; --cnt) {
-            key = dstr2(rng);
-            strategy_A(array, counter, key);
+            strategy_C(array, helping_array, counter, counter, key);
         }
         auto end = std::chrono::steady_clock::now();
         auto time_span_A_r = std::chrono::duration_cast<std::chrono::microseconds>(end - begin); 
         
         //неравномерно: ищутся элементы только из первой четверти массива
         randomize(array, counter);
+        int key_n = array[0];
+        for (int i = counter/4; i < counter; ++i) {
+            if (key == array[i]) {
+                key = key_n;
+            }
+        }
+
         auto begin_n = std::chrono::steady_clock::now();
         for (unsigned cnt = 10000; cnt != 0 ; --cnt) {
-            key = dstr2(rng);
-            int key_n = array[0];
-            for (int i = counter/4; i < counter; ++i) {
-                if (key == array[i]) {
-                    key = key_n;
-                }
-            }
-            strategy_A(array, counter, key);
+            strategy_C(array, helping_array, counter, counter, key);
         }
         auto end_n = std::chrono::steady_clock::now();
         auto time_span_A_n = std::chrono::duration_cast<std::chrono::microseconds>(end_n - begin_n); 
