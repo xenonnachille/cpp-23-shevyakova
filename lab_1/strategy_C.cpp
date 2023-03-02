@@ -41,6 +41,7 @@ void strategy_C(int array[], int help_arr[], int n, int key){
     if (i > 0) {
         if (help_arr[i+1] > help_arr[i]) {
             swap(array[i], array[i-1]);
+            swap(help_arr[i+1], help_arr[i]);
         }
     }
 }
