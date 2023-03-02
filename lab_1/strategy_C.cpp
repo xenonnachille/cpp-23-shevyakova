@@ -9,7 +9,7 @@ using std::endl;
 using std::cin;
 
 #ifndef N
-#define N 500000
+#define N 260000
 #endif
 
 unsigned seed = 1000-7;
@@ -83,6 +83,7 @@ int main() {
         
         //неравномерно: ищутся элементы только из первой четверти массива
         randomize(array, counter);
+        helping_array[counter+1] = {0};
         auto begin_n = std::chrono::steady_clock::now();
         for (unsigned cnt = 10000; cnt != 0 ; --cnt) {
             key = dstr2(rng);
