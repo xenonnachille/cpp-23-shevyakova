@@ -7,7 +7,7 @@ using std::cout;
 using std::endl; 
 
 #ifndef N
-#define N 9
+#define N 10
 #endif
 
 void swap(int& lha, int& rha) {
@@ -23,7 +23,7 @@ void qsort(int (&array)[N], int ind_left_base, int ind_right_base) {
         int ind_left = ind_left_base, ind_right = ind_right_base;
 
         
-        while (ind_left <= ind_right) {
+        while (ind_left < ind_right) {
 
             while (array[ind_left] < array[pivo]) {
                 ind_left++;
@@ -37,6 +37,14 @@ void qsort(int (&array)[N], int ind_left_base, int ind_right_base) {
             }
             swap(array[ind_left++], array[ind_right--]);
         }
+
+        if(array[ind_right] < array[ind_right - 1]) {
+            swap(array[ind_right], array[ind_right - 1]);
+        }
+        if(array[ind_right + 1] < array[ind_right]) {
+            swap(array[ind_right + 1], array[ind_right]);
+        }
+
         int p = ind_right;
 
         qsort(array, ind_left_base, p);
