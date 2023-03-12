@@ -1,2 +1,4 @@
 lab_2/shellsort.exe
 lab_2/.vscode/settings.json
+*.exe
+*.json

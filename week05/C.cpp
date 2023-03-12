@@ -6,7 +6,7 @@ using std::endl;
 
 int main() {
     int* ptr = nullptr;
-    ptr = new int;
+    ptr = new int[1000000000];
     int a = -1, i = 0;
     while (a != 0) {
         cin >> a;
@@ -19,7 +19,7 @@ int main() {
         *(array + k) = *(ptr + k);
     }
 
-
+    delete [] ptr;
     for (int k = 0; k < i - 2; k++) {
         cout << array[k] - array[k + 1] << ' ';
     }
