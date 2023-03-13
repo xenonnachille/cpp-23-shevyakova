@@ -10,5 +10,6 @@ int main() {
     cout << ptr << ' ' << *ptr << endl;
     cout << ptr - 3 << ' ' << *(ptr - 3) << endl;
     cout << ptr + 5 << ' ' << *(ptr + 5) << endl;
+    delete ptr;
     return 0;
 }

@@ -38,5 +38,6 @@ int main() {
     input_array(ptr, N);
     reverse(ptr, N);
     print(ptr, N);
+    delete [] ptr; 
     return 0;
 }

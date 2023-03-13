@@ -14,7 +14,6 @@ int main() {
     cout << endl;
 
     for (int i = 0; i < 10; i++) {
-        ptr[i] = i;
         cout << ptr[i] << ' ';
     }
     cout << endl;
@@ -28,5 +27,6 @@ int main() {
     }
     cout << endl;
 
+    delete [] ptr;
     return 0;
 }
