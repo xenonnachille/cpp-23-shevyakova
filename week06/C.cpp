@@ -6,15 +6,21 @@ using std::cout;
 using std::endl;
 using std::string;
 
-struct Students
+struct Time
 {
-    string name;
-    int srebal;
+    int hours;
+    int minutes;
+    int seconds;
 };
 
 int main() {
-    string s1 = "hihihaha1";
-    string s2 = "hihihaha2";
-    cout << s1.compare(s2);
+    Time t_0, t_k, dt;
+    cin >> t_0.hours >> t_0.minutes >> t_0.seconds >> dt.hours >> dt.minutes >> dt.seconds;
+    t_k.seconds = (t_0.seconds + dt.seconds) % 60;
+    t_k.minutes = (t_0.minutes + dt.minutes + (t_0.seconds + dt.seconds) / 60) % 60;
+    t_k.hours   = (t_0.hours + dt.hours + (t_0.minutes + dt.minutes + (t_0.seconds + dt.seconds) / 60) / 60) % 24;
+
+    cout << t_k.hours << ':' << t_k.minutes << ':' << t_k.seconds << endl;
+
     return 0;
 }
