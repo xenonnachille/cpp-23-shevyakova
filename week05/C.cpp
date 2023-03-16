@@ -23,5 +23,6 @@ int main() {
     for (int k = 0; k < i - 2; k++) {
         cout << array[k] - array[k + 1] << ' ';
     }
+    delete [] array;
     return 0;
 }
