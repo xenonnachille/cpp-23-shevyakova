@@ -12,18 +12,21 @@ struct Node
 
 Node *read_list(Node *head) {
     if (head == nullptr) {
-        return nullptr;
+        head = new Node;
     }
 
     int x         = -1;
     Node *current = head;
-    while (x != 0) {
+    while (true) {
         cin >> x;
-        current->key  = x;
+        current->key = x;
+        if (x == 0) {
+            current->next = nullptr;
+            break;
+        }
         current->next = new Node;
         current       = current->next;
     }
-    delete current;
     return head;
 }
 
@@ -58,12 +61,33 @@ void destroy_list(Node *&head_ref) {
     head_ref = nullptr;
 }
 
-Node *reverse(Node *head);
+Node *reverse(Node *head) {
+    int size      = 0;
+    Node *current = head;
+    while (current != nullptr) {
+        size++;
+        current = current->next;
+    }
+    current   = head;
+    int *keys = new int[size];
+    for (int i = 0; i < size; i++) {
+        keys[i] = current->key;
+        current = current->next;
+    }
+    current = head;
+    for (int i = 0; i < size; i++) {
+        current->key = keys[size - 1 - i];
+        current      = current->next;
+    }
+    delete[] keys;
+    return head;
+}
 
 int main() {
     Node *head = nullptr;
     head       = read_list(head);
-    head       = reverse(head);
+    print_list(head);
+    head = reverse(head);
     print_list(head);
     destroy_list(head);
     return 0;
